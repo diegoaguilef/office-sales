@@ -59,7 +59,7 @@ public class Article {
 
     @Override
     public String toString() {
-        return "Article{" + "name=" + name + ", price=" + price + ", stock=" + stock + '}';
+        return "ID: "+id+", Nombre: " + name + ", Precio: " + price + ", Stock: " + stock + ' ';
     }
    
 }

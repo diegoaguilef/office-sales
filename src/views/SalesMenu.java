@@ -62,9 +62,19 @@ public class SalesMenu extends javax.swing.JFrame {
         jMenu1.add(menuUsers);
 
         menuClients.setText("Clientes");
+        menuClients.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuClientsActionPerformed(evt);
+            }
+        });
         jMenu1.add(menuClients);
 
         menuArticles.setText("Articulos");
+        menuArticles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuArticlesActionPerformed(evt);
+            }
+        });
         jMenu1.add(menuArticles);
 
         jMenuBar1.add(jMenu1);
@@ -110,6 +120,20 @@ public class SalesMenu extends javax.swing.JFrame {
             new LoginForm().setVisible(true);
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void menuArticlesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuArticlesActionPerformed
+        ArticlesMaintainer am = new ArticlesMaintainer();
+        am.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        am.setVisible(true);
+    }//GEN-LAST:event_menuArticlesActionPerformed
+
+    private void menuClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClientsActionPerformed
+        // TODO add your handling code here:
+        
+        ClientsMaintainer cm = new ClientsMaintainer();
+        cm.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        cm.setVisible(true);
+    }//GEN-LAST:event_menuClientsActionPerformed
 
     /**
      * @param args the command line arguments

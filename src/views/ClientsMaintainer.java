@@ -5,6 +5,10 @@
  */
 package views;
 
+import controllers.ClientDAO;
+import javax.swing.JOptionPane;
+import models.Client;
+
 /**
  *
  * @author diego
@@ -16,8 +20,24 @@ public class ClientsMaintainer extends javax.swing.JFrame {
      */
     public ClientsMaintainer() {
         initComponents();
+        setLocationRelativeTo(this);
+    }
+    
+    public void fillForm(Client client) {
+        txtRut.setText(client.getRut());
+        txtName.setText(client.getName());
+        txtAddress.setText(client.getAddress());
+        txtPhone.setText(String.valueOf(client.getPhone()));
+        txtFirm.setText(client.getFirm());
     }
 
+    public void clearForm() {
+        txtRut.setText("");
+        txtName.setText("");
+        txtAddress.setText("");
+        txtPhone.setText("");
+        txtFirm.setText("");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,21 +47,197 @@ public class ClientsMaintainer extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        stxTitle = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtRut = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtAddress = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtFirm = new javax.swing.JTextField();
+        btnCreate = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnList = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        clientsList = new javax.swing.JTextArea();
+        jLabel5 = new javax.swing.JLabel();
+        txtPhone = new javax.swing.JTextField();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        stxTitle.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        stxTitle.setText("Mantenedor de Clientes");
+        jPanel1.add(stxTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
+
+        jLabel1.setText("Rut :");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        jPanel1.add(txtRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 150, -1));
+
+        jLabel2.setText("Nombre Completo:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 150, -1));
+
+        jLabel3.setText("Durección :");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        jPanel1.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 150, -1));
+
+        jLabel4.setText("Empresa :");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
+        jPanel1.add(txtFirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 150, -1));
+
+        btnCreate.setText("Crear");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 90, -1));
+
+        btnSearch.setText("Buscar");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 90, -1));
+
+        btnEdit.setText("Editar");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 90, -1));
+
+        btnDelete.setText("Eliminar");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 90, -1));
+
+        btnList.setText("Listar");
+        btnList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnList, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 90, -1));
+
+        clientsList.setColumns(20);
+        clientsList.setRows(5);
+        jScrollPane1.setViewportView(clientsList);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 400, 120));
+
+        jLabel5.setText("Teléfono :");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
+        jPanel1.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 150, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        String rut, name, address, firm;
+        int phone;
+        Client client = null;
+        if (!txtRut.getText().equals("") 
+                && !txtName.getText().equals("")
+                && !txtAddress.getText().equals("")
+                && !txtPhone.getText().equals("")
+                && !txtFirm.getText().equals("")) {
+            rut = txtRut.getText();
+            name = txtName.getText();
+            address = txtAddress.getText();
+            firm = txtFirm.getText();
+            phone = Integer.parseInt(txtPhone.getText());
+            client = new Client(address, phone, firm, name, rut);
+            if (ClientDAO.create(client)) {
+                clearForm();
+                JOptionPane.showMessageDialog(null, "Cliente Creado", "Crear", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al crear Cliente: Rut ya existe", "Crear", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese todos los campos del cliente", "Crear", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        String rut, name, address, firm;
+        int phone;
+        Client client = null;
+        if (!txtRut.getText().equals("")) {
+            rut = txtRut.getText();
+            client = ClientDAO.find(rut);
+            if (client != null) {
+                fillForm(client);
+                JOptionPane.showMessageDialog(null, "Cliente Encontrado", "Buscar", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Cliente no encontrado", "Buscar", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese rut del cliente", "Buscar", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        String rut;
+        if (!txtRut.getText().equals("")) {
+            rut = txtRut.getText();
+            if (ClientDAO.delete(rut)) {
+                clearForm();
+                JOptionPane.showMessageDialog(null, "Cliente eliminado", "Eliminar", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Cliente no encontrado", "Eliminar", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese rut del cliente", "Eliminar", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        String rut, name, address, firm;
+        int phone;
+        Client client = null;
+        if (!txtRut.getText().equals("") 
+                && !txtName.getText().equals("")
+                && !txtAddress.getText().equals("")
+                && !txtPhone.getText().equals("")
+                && !txtFirm.getText().equals("")) {
+            rut = txtRut.getText();
+            name = txtName.getText();
+            address = txtAddress.getText();
+            firm = txtFirm.getText();
+            phone = Integer.parseInt(txtPhone.getText());
+            client = new Client(address, phone, firm, name, rut);
+            if (ClientDAO.update(client)) {
+                clearForm();
+                JOptionPane.showMessageDialog(null, "Cliente Editado", "Editar", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al editar Cliente", "Editar", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese todos los campos del cliente", "Editar", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListActionPerformed
+        clientsList.setText("");
+        ClientDAO.all().forEach((cliente) -> {
+            clientsList.append(cliente.toString() + "\n");
+        });
+    }//GEN-LAST:event_btnListActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +275,24 @@ public class ClientsMaintainer extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnList;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JTextArea clientsList;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel stxTitle;
+    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtFirm;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPhone;
+    private javax.swing.JTextField txtRut;
     // End of variables declaration//GEN-END:variables
 }

@@ -49,7 +49,7 @@ public class Client extends Person {
 
     @Override
     public String toString() {
-        return "Client{" + "address=" + address + ", phone=" + phone + ", firm=" + firm + '}';
+        return "Rut: "+getRut()+", Nombre: "+getName()+ ", Dirección: "+address + ", Teléfono:" + phone + ", Empresa: " + firm + ' ';
     }
     
 }
