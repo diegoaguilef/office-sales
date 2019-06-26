@@ -56,7 +56,7 @@ public class UserDAO {
     public static boolean update(User user) {
         int i = 0;
         for (User u : users) {
-            if (u.getRut().equals(user.getRut())) {
+            if (u.getUsername().equals(user.getUsername())) {
                 users.set(i, user);
                 return true;
             }

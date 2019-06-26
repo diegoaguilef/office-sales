@@ -29,6 +29,7 @@ public class UsersMaintainer extends javax.swing.JFrame {
         txtRut.setText(user.getRut());
         txtPassword.setText(user.getPassword());
         txtRepeatPassword.setText(user.getPassword());
+        checkLocked.setSelected(user.isLocked());
     }
 
     public void clearForm() {
@@ -67,6 +68,7 @@ public class UsersMaintainer extends javax.swing.JFrame {
         usersList = new javax.swing.JTextArea();
         txtPassword = new javax.swing.JPasswordField();
         txtRepeatPassword = new javax.swing.JPasswordField();
+        checkLocked = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -143,6 +145,9 @@ public class UsersMaintainer extends javax.swing.JFrame {
         jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 150, -1));
         jPanel1.add(txtRepeatPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 150, -1));
 
+        checkLocked.setText("Bloqueado/Bloquear");
+        jPanel1.add(checkLocked, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 490));
 
         pack();
@@ -150,6 +155,7 @@ public class UsersMaintainer extends javax.swing.JFrame {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         String rut, fullname, username, password;
+        boolean locked = false;
         User user = null;
         if (!txtRut.getText().equals("")
                 && !txtFullName.getText().equals("")
@@ -161,7 +167,8 @@ public class UsersMaintainer extends javax.swing.JFrame {
                 fullname = txtFullName.getText();
                 username = txtUsername.getText();
                 password = txtPassword.getText();
-                user = new User(username, password, fullname, rut);
+                locked = checkLocked.isSelected();
+                user = new User(username, password, fullname, rut, locked);
                 if (UserDAO.update(user)) {
                     clearForm();
                     JOptionPane.showMessageDialog(null, "Usuario Editado Correctamente", "Editar", 1);
@@ -178,6 +185,7 @@ public class UsersMaintainer extends javax.swing.JFrame {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         String rut, fullname, username, password;
+        boolean locked = false;
         User user = null;
         if (!txtRut.getText().equals("")
                 && !txtFullName.getText().equals("")
@@ -189,7 +197,8 @@ public class UsersMaintainer extends javax.swing.JFrame {
                 fullname = txtFullName.getText();
                 username = txtUsername.getText();
                 password = txtPassword.getText();
-                user = new User(username, password, fullname, rut);
+                locked = checkLocked.isSelected();
+                user = new User(username, password, fullname, rut, locked);
                 if (UserDAO.create(user)) {
                     clearForm();
                     JOptionPane.showMessageDialog(null, "Usuario Creado Correctamente", "Creado", 1);
@@ -287,6 +296,7 @@ public class UsersMaintainer extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnEdit;
     private javax.swing.JToggleButton btnListUsers;
     private javax.swing.JToggleButton btnSearch;
+    private javax.swing.JCheckBox checkLocked;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

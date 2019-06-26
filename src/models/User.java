@@ -27,6 +27,14 @@ public class User extends Person {
         this.locked = false;
     }
 
+    public User(String username, String password, String name, String rut, boolean locked) {
+        super(name, rut);
+        this.username = username;
+        this.password = password;
+        this.loginAttempts = 0;
+        this.locked = locked;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -50,7 +58,7 @@ public class User extends Person {
         }
 
     }
-    
+
     public int remainingAttempts() {
         return 3 - loginAttempts;
     }
@@ -63,6 +71,10 @@ public class User extends Person {
         this.locked = true;
     }
 
+    public String displayStatus() {
+        return isLocked() ? "Bloqueado" : "Habilitado";
+    }
+
     public void unlockUser() {
         this.loginAttempts = 0;
         this.locked = false;
@@ -70,7 +82,7 @@ public class User extends Person {
 
     @Override
     public String toString() {
-        return "Usuario=" + "Nombre: "+getName()+" Usuario: " + username + " Rut: "+ getRut() +' ';
+        return "Usuario: " + username + " - Nombre: " + getName() + " - Rut: " + getRut() + " - Estado: "+displayStatus();
     }
 
 }
