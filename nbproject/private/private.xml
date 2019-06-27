@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/diego/repositories/office-sales/src/controllers/ClientDAO.java</file>
+            <file>file:/home/diego/repositories/office-sales/src/views/LoginForm.java</file>
+            <file>file:/home/diego/repositories/office-sales/src/views/SalesReport.java</file>
+            <file>file:/home/diego/repositories/office-sales/src/views/SalesForm.java</file>
+            <file>file:/home/diego/repositories/office-sales/src/views/ArticlesMaintainer.java</file>
+            <file>file:/home/diego/repositories/office-sales/src/controllers/SaleDAO.java</file>
+            <file>file:/home/diego/repositories/office-sales/.gitignore</file>
+            <file>file:/home/diego/repositories/office-sales/src/helpers/Fecha.java</file>
+            <file>file:/home/diego/repositories/office-sales/src/models/Article.java</file>
+            <file>file:/home/diego/repositories/office-sales/src/views/ClientsMaintainer.java</file>
+            <file>file:/home/diego/repositories/office-sales/src/views/SalesMenu.java</file>
+            <file>file:/home/diego/repositories/office-sales/src/controllers/UserDAO.java</file>
+            <file>file:/home/diego/repositories/office-sales/src/views/UsersMaintainer.java</file>
+            <file>file:/home/diego/repositories/office-sales/src/controllers/ArticleDAO.java</file>
+        </group>
+    </open-files>
+</project-private>
