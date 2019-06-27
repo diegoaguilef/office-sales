@@ -48,8 +48,8 @@ public class SalesReport extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         salesTable = new javax.swing.JTable();
-        btnList = new javax.swing.JToggleButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        btnList = new javax.swing.JButton();
+        JButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -127,13 +127,13 @@ public class SalesReport extends javax.swing.JFrame {
         });
         jPanel1.add(btnList, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, -1, -1));
 
-        jToggleButton1.setText("Salir");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        JButton1.setText("Salir");
+        JButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                JButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 130, -1));
+        jPanel1.add(JButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 130, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 410));
 
@@ -222,10 +222,10 @@ public class SalesReport extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSearchBetweenActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void JButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButton1ActionPerformed
         // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_JButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,7 +263,7 @@ public class SalesReport extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnList;
+    private javax.swing.JButton btnList;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSearchBetween;
     private javax.swing.JLabel jLabel1;
@@ -272,7 +272,7 @@ public class SalesReport extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JButton JButton1;
     private javax.swing.JTable salesTable;
     private javax.swing.JLabel stxTitle;
     private javax.swing.JTextField txtDate;
