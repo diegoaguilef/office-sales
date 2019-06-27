@@ -13,18 +13,46 @@ import helpers.Date;
  */
 public class Sale {
     private int id;
+    private Date sale_at;
     private Article article;
     private Client client;
-    private Date sale_at;
+    private int quantity;
+    private double net;
+    private int total;
 
     public Sale() {
     }
 
-    public Sale(int id, Article article, Client client, Date sale_at) {
+    public Sale(int id, Date sale_at, Article article, Client client, int quantity) {
         this.id = id;
+        this.sale_at = sale_at;
         this.article = article;
         this.client = client;
-        this.sale_at = sale_at;
+        this.quantity = quantity;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getNet() {
+        return net;
+    }
+
+    public void setNet(double net) {
+        this.net = net;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
     }
 
     public int getId() {

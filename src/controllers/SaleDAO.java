@@ -41,17 +41,17 @@ public class SaleDAO {
         Date d4 = new Date(05, 02, 2019);
         Date d5 = new Date(06, 02, 2019);
         
-        create(new Sale(1, a1, c1, d1));
-        create(new Sale(2, a1, c1, d1));
-        create(new Sale(3, a2, c2, d2));
-        create(new Sale(4, a3, c2, d2));
-        create(new Sale(5, a1, c2, d3));
-        create(new Sale(6, a3, c1, d3));
-        create(new Sale(7, a1, c2, d4));
-        create(new Sale(8, a2, c1, d4));
-        create(new Sale(9, a1, c1, d5));
-        create(new Sale(10, a1, c2, d5));
-        create(new Sale(11, a1, c2, d2));
+        create(new Sale(1, d1, a1, c1, 1));
+        create(new Sale(2, d1, a1, c1, 1));
+        create(new Sale(3, d2, a2, c2, 1));
+        create(new Sale(4, d2, a3, c2, 1));
+        create(new Sale(5, d3, a1, c2, 1));
+        create(new Sale(6, d3, a3, c1, 1));
+        create(new Sale(7, d4, a1, c2, 1));
+        create(new Sale(8, d4, a2, c1, 1));
+        create(new Sale(9, d5, a1, c1, 1));
+        create(new Sale(10, d5, a1, c2, 1));
+        create(new Sale(11, d2, a1, c2, 1));
     }
     
     /**
@@ -60,11 +60,20 @@ public class SaleDAO {
      * @return
      */
     public static boolean create(Sale sale){
-        if (!sales.stream().noneMatch((s) -> (s.getArticle().getStock() == 0))) {
+        int total;
+        double net, iva;
+        if (!sales.stream().noneMatch((s) -> (
+                s.getArticle().getStock() == 0
+                || s.getId() == sale.getId()))) {
             return false;
         }
         Article a = ArticleDAO.find(sale.getArticle().getId());
-        a.setStock(a.getStock() - 1);
+        a.setStock(a.getStock() - sale.getQuantity());
+        total = sale.getQuantity() * sale.getArticle().getPrice();
+        iva = total * 0.19;
+        net = total - iva;
+        sale.setTotal(total);
+        sale.setNet(net);
         ArticleDAO.update(a);
         sales.add(sale);
         return true;
