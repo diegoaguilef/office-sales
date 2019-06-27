@@ -11,7 +11,7 @@ import java.util.Calendar;
  *
  * @author kdieg
  */
-public class Date {
+public class Fecha {
 
     private int dia;
     private int mes;
@@ -20,7 +20,7 @@ public class Date {
     /**
      *
      */
-    public Date() {
+    public Fecha() {
         /*
         this.dia = Calendar.DAY_OF_MONTH;
         this.mes = Calendar.MONTH;
@@ -34,7 +34,7 @@ public class Date {
      * @param mes Mes de la Fecha a Ingresar
      * @param anio Año de la Fecha a Ingresar
      */
-    public Date(int dia, int mes, int anio) {
+    public Fecha(int dia, int mes, int anio) {
         this.dia = dia;
         this.mes = mes;
         this.anio = anio;
@@ -44,7 +44,7 @@ public class Date {
      *
      * @param fecha
      */
-    public Date(String fecha) {
+    public Fecha(String fecha) {
         if (fecha.contains("-")) {
             this.dia = Integer.valueOf(fecha.split("-")[0]);
             this.mes = Integer.valueOf(fecha.split("-")[1]);
@@ -107,6 +107,10 @@ public class Date {
     public void setAnio(int anio) {
         this.anio = anio;
     }
+    
+    public boolean equals(Fecha fecha){
+        return toString().equals(fecha.toString());
+    }
 
     /**
      *
@@ -114,7 +118,18 @@ public class Date {
      */
     @Override
     public String toString() {
-        return dia + "/" + mes + "/" + anio;
+        String day, month;
+        if(dia < 10){
+            day = "0"+dia;
+        }else{
+            day = String.valueOf(dia);
+        }
+        if(mes < 10){
+            month = "0"+mes;
+        }else{
+            month = String.valueOf(mes);
+        }
+        return day + "/" + month + "/" + anio;
     }
 
     /**

@@ -5,7 +5,7 @@
  */
 package models;
 
-import helpers.Date;
+import helpers.Fecha;
 
 /**
  *
@@ -13,7 +13,7 @@ import helpers.Date;
  */
 public class Sale {
     private int id;
-    private Date sale_at;
+    private Fecha sale_at;
     private Article article;
     private Client client;
     private int quantity;
@@ -23,7 +23,7 @@ public class Sale {
     public Sale() {
     }
 
-    public Sale(int id, Date sale_at, Article article, Client client, int quantity) {
+    public Sale(int id, Fecha sale_at, Article article, Client client, int quantity) {
         this.id = id;
         this.sale_at = sale_at;
         this.article = article;
@@ -79,11 +79,11 @@ public class Sale {
         this.client = client;
     }
 
-    public Date getSale_at() {
+    public Fecha getSaleAt() {
         return sale_at;
     }
 
-    public void setSale_at(Date sale_at) {
+    public void setSaleAt(Fecha sale_at) {
         this.sale_at = sale_at;
     }
     

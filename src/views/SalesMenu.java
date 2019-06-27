@@ -21,7 +21,6 @@ public class SalesMenu extends javax.swing.JFrame {
     public SalesMenu() {
         initComponents();
         setLocationRelativeTo(this);
-        
 
     }
 
@@ -43,6 +42,7 @@ public class SalesMenu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         menuLogOut = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
@@ -92,7 +92,16 @@ public class SalesMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Reporte Ventas");
+        jMenu3.setText("Reportes");
+
+        jMenuItem3.setText("Ventas");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem3);
+
         jMenuBar1.add(jMenu3);
 
         menuLogOut.setText("Salir");
@@ -139,7 +148,7 @@ public class SalesMenu extends javax.swing.JFrame {
 
     private void menuClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClientsActionPerformed
         // TODO add your handling code here:
-        
+
         ClientsMaintainer cm = new ClientsMaintainer();
         cm.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         cm.setVisible(true);
@@ -149,8 +158,14 @@ public class SalesMenu extends javax.swing.JFrame {
         SalesForm sf = new SalesForm();
         sf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         sf.setVisible(true);
-        
+
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        SalesReport sr = new SalesReport();
+        sr.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        sr.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,6 +209,7 @@ public class SalesMenu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem menuArticles;
     private javax.swing.JMenuItem menuClients;

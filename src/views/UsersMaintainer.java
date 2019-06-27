@@ -59,11 +59,11 @@ public class UsersMaintainer extends javax.swing.JFrame {
         txtUsername = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        btnListUsers = new javax.swing.JToggleButton();
-        btnSearch = new javax.swing.JToggleButton();
-        btnDelete = new javax.swing.JToggleButton();
-        btnEdit = new javax.swing.JToggleButton();
-        btnCreate = new javax.swing.JToggleButton();
+        btnListUsers = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnCreate = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         usersList = new javax.swing.JTextArea();
         txtPassword = new javax.swing.JPasswordField();
@@ -220,6 +220,21 @@ public class UsersMaintainer extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_btnListUsersActionPerformed
 
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        String username;
+        if (!txtUsername.getText().equals("")) {
+            username = txtUsername.getText();
+            if (UserDAO.delete(username)) {
+                clearForm();
+                JOptionPane.showMessageDialog(null, "Usuario eliminado", "Eliminar", 1);
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario no existe", "Elimnar", 2);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese nombre usuario para buscar", "Validación", 2);
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         String username;
         User user = null;
@@ -236,21 +251,6 @@ public class UsersMaintainer extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingrese nombre usuario para buscar", "Validación", 2);
         }
     }//GEN-LAST:event_btnSearchActionPerformed
-
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        String username;
-        if (!txtUsername.getText().equals("")) {
-            username = txtUsername.getText();
-            if (UserDAO.delete(username)) {
-                clearForm();
-                JOptionPane.showMessageDialog(null, "Usuario eliminado", "Eliminar", 1);
-            } else {
-                JOptionPane.showMessageDialog(null, "Usuario no existe", "Elimnar", 2);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Ingrese nombre usuario para buscar", "Validación", 2);
-        }
-    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,11 +291,11 @@ public class UsersMaintainer extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnCreate;
-    private javax.swing.JToggleButton btnDelete;
-    private javax.swing.JToggleButton btnEdit;
-    private javax.swing.JToggleButton btnListUsers;
-    private javax.swing.JToggleButton btnSearch;
+    private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnListUsers;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JCheckBox checkLocked;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

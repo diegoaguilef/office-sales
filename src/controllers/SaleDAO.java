@@ -5,8 +5,11 @@
  */
 package controllers;
 
-import helpers.Date;
+import helpers.Fecha;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import models.Article;
 import models.Client;
 import models.Sale;
@@ -16,31 +19,32 @@ import models.Sale;
  * @author diego
  */
 public class SaleDAO {
+
     private static ArrayList<Sale> sales = new ArrayList<>();
-    
+
     /**
      *
      * @return
      */
-    public static ArrayList<Sale> all(){
+    public static ArrayList<Sale> all() {
         return sales;
     }
-    
+
     /**
      *
      */
-    public static void fillSales(){
+    public static void fillSales() {
         Article a1 = new Article(1, "Lapiz", 200, 10);
         Article a2 = new Article(4, "Pendrive", 5000, 2);
         Article a3 = new Article(5, "Tijera", 300, 3);
-        Client c1 = new Client("Los Pinos 12", 945572692, "Resit",  "Diego", "1-1");
-        Client c2 = new Client("Los Raulies 123", 94588777, "BCI",  "Fernando", "2-2");
-        Date d1 = new Date(20, 01, 2019);
-        Date d2 = new Date(21, 01, 2019);
-        Date d3 = new Date(27, 01, 2019);
-        Date d4 = new Date(05, 02, 2019);
-        Date d5 = new Date(06, 02, 2019);
-        
+        Client c1 = new Client("Los Pinos 12", 945572692, "Resit", "Diego", "1-1");
+        Client c2 = new Client("Los Raulies 123", 94588777, "BCI", "Fernando", "2-2");
+        Fecha d1 = new Fecha(20, 01, 2019);
+        Fecha d2 = new Fecha(21, 01, 2019);
+        Fecha d3 = new Fecha(27, 01, 2019);
+        Fecha d4 = new Fecha(05, 02, 2019);
+        Fecha d5 = new Fecha(06, 02, 2019);
+
         create(new Sale(1, d1, a1, c1, 1));
         create(new Sale(2, d1, a1, c1, 1));
         create(new Sale(3, d2, a2, c2, 1));
@@ -53,17 +57,16 @@ public class SaleDAO {
         create(new Sale(10, d5, a1, c2, 1));
         create(new Sale(11, d2, a1, c2, 1));
     }
-    
+
     /**
      *
      * @param sale
      * @return
      */
-    public static boolean create(Sale sale){
+    public static boolean create(Sale sale) {
         int total;
         double net, iva;
-        if (!sales.stream().noneMatch((s) -> (
-                s.getArticle().getStock() == 0
+        if (!sales.stream().noneMatch((s) -> (s.getArticle().getStock() == 0
                 || s.getId() == sale.getId()))) {
             return false;
         }
@@ -78,16 +81,16 @@ public class SaleDAO {
         sales.add(sale);
         return true;
     }
-    
+
     /**
      *
      * @param sale
      * @return
      */
-    public static boolean update(Sale sale){
+    public static boolean update(Sale sale) {
         int i = 0;
-        for(Sale s : sales){
-            if(s.getId() == sale.getId()){
+        for (Sale s : sales) {
+            if (s.getId() == sale.getId()) {
                 sales.set(i, sale);
                 return true;
             }
@@ -95,30 +98,69 @@ public class SaleDAO {
         }
         return false;
     }
-    
+
     /**
      *
      * @param id
      * @return
      */
-    public static Sale find(int id){
+    public static Sale find(int id) {
         Sale sale = null;
-        for(Sale s : sales){
-            if(s.getId() == id){
+        for (Sale s : sales) {
+            if (s.getId() == id) {
                 sale = s;
             }
         }
         return sale;
     }
+
+    public static ArrayList<Sale> findByDate(Fecha date) {
+        ArrayList<Sale> salesArr = new ArrayList<>();
+        for (Sale s : sales) {
+            if (s.getSaleAt().equals(date)) {
+                salesArr.add(s);
+            }
+        }
+        return salesArr;
+    }
     
+    protected static boolean betweenDates(String date, String start, String end){
+        Date startDate = null, endDate = null, saleAt = null;
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        try{
+            startDate = format.parse(start);
+            endDate = format.parse(end);
+            saleAt = format.parse(date);
+            if(startDate.before(saleAt) && endDate.after(saleAt)){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static ArrayList<Sale> findBetweenDates(Fecha start, Fecha end) {
+        ArrayList<Sale> salesArr = new ArrayList<>();
+        
+        for (Sale s : all()) {
+            if (betweenDates(s.getSaleAt().toString(), start.toString(), end.toString())) {
+                salesArr.add(s);
+            }
+        }
+        return salesArr;
+    }
+
     /**
      *
      * @param id
      * @return
      */
-    public static boolean delete(int id){
-        for(Sale s : sales){
-            if(s.getId() == id){
+    public static boolean delete(int id) {
+        for (Sale s : sales) {
+            if (s.getId() == id) {
                 sales.remove(s);
                 return true;
             }

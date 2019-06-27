@@ -9,7 +9,7 @@ import com.sun.glass.events.KeyEvent;
 import controllers.ArticleDAO;
 import controllers.ClientDAO;
 import controllers.SaleDAO;
-import helpers.Date;
+import helpers.Fecha;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import models.Article;
@@ -278,7 +278,7 @@ public class SalesForm extends javax.swing.JFrame {
         Article article = null;
         Client client = null;
         Sale sale = null;
-        Date date = new Date(txtDate.getText());
+        Fecha date = new Fecha(txtDate.getText());
         if (!txtId.getText().equals("")
                 && !txtDate.getText().equals("")
                 && date.fechaCorrecta()
