@@ -95,6 +95,11 @@ public class UserDAO {
         return user;
     }
 
+    /**
+     *
+     * @param password
+     * @return
+     */
     public static User findPassword(String password) {
         User user = null;
         for (User u : users) {
@@ -105,9 +110,15 @@ public class UserDAO {
         return user;
     }
 
+    /**
+     *
+     * @param username
+     * @param password
+     * @return
+     */
     public static User session(String username, String password) {
         User user = null;
-        
+
         for (User u : users) {
             if (u.getUsername().equals(username)
                     && u.getPassword().equals(password)) {

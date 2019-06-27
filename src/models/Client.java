@@ -14,8 +14,19 @@ public class Client extends Person {
     private int phone;
     private String firm;
     
+    /**
+     *
+     */
     public Client(){}
 
+    /**
+     *
+     * @param address
+     * @param phone
+     * @param firm
+     * @param name
+     * @param rut
+     */
     public Client(String address, int phone, String firm, String name, String rut) {
         super(name, rut);
         this.address = address;
@@ -23,26 +34,50 @@ public class Client extends Person {
         this.firm = firm;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAddress() {
         return address;
     }
 
+    /**
+     *
+     * @param address
+     */
     public void setAddress(String address) {
         this.address = address;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPhone() {
         return phone;
     }
 
+    /**
+     *
+     * @param phone
+     */
     public void setPhone(int phone) {
         this.phone = phone;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getFirm() {
         return firm;
     }
 
+    /**
+     *
+     * @param firm
+     */
     public void setFirm(String firm) {
         this.firm = firm;
     }

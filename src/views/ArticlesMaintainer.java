@@ -23,6 +23,10 @@ public class ArticlesMaintainer extends javax.swing.JFrame {
         setLocationRelativeTo(this);
     }
 
+    /**
+     *
+     * @param article
+     */
     public void fillForm(Article article) {
         txtId.setText(String.valueOf(article.getId()));
         txtName.setText(article.getName());
@@ -31,6 +35,9 @@ public class ArticlesMaintainer extends javax.swing.JFrame {
 
     }
 
+    /**
+     *
+     */
     public void clearForm() {
         txtId.setText("");
         txtName.setText("");
@@ -185,7 +192,7 @@ public class ArticlesMaintainer extends javax.swing.JFrame {
         int id, price, stock;
         String name;
         Article article = null;
-        if (!txtId.getText().equals("") 
+        if (!txtId.getText().equals("")
                 && !txtName.getText().equals("")
                 && !txtPrice.getText().equals("")
                 && !txtStock.getText().equals("")) {
@@ -209,7 +216,7 @@ public class ArticlesMaintainer extends javax.swing.JFrame {
         int id, price, stock;
         String name;
         Article article = null;
-        if (!txtId.getText().equals("") 
+        if (!txtId.getText().equals("")
                 && !txtName.getText().equals("")
                 && !txtPrice.getText().equals("")
                 && !txtStock.getText().equals("")) {

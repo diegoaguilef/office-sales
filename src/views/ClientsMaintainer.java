@@ -22,7 +22,11 @@ public class ClientsMaintainer extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
     }
-    
+
+    /**
+     *
+     * @param client
+     */
     public void fillForm(Client client) {
         txtRut.setText(client.getRut());
         txtName.setText(client.getName());
@@ -31,6 +35,9 @@ public class ClientsMaintainer extends javax.swing.JFrame {
         txtFirm.setText(client.getFirm());
     }
 
+    /**
+     *
+     */
     public void clearForm() {
         txtRut.setText("");
         txtName.setText("");
@@ -38,6 +45,7 @@ public class ClientsMaintainer extends javax.swing.JFrame {
         txtPhone.setText("");
         txtFirm.setText("");
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,6 +74,7 @@ public class ClientsMaintainer extends javax.swing.JFrame {
         clientsList = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         txtPhone = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -142,7 +151,15 @@ public class ClientsMaintainer extends javax.swing.JFrame {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
         jPanel1.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 150, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 420));
+        jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 130, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -151,7 +168,7 @@ public class ClientsMaintainer extends javax.swing.JFrame {
         String rut, name, address, firm;
         int phone;
         Client client = null;
-        if (!txtRut.getText().equals("") 
+        if (!txtRut.getText().equals("")
                 && !txtName.getText().equals("")
                 && !txtAddress.getText().equals("")
                 && !txtPhone.getText().equals("")
@@ -210,7 +227,7 @@ public class ClientsMaintainer extends javax.swing.JFrame {
         String rut, name, address, firm;
         int phone;
         Client client = null;
-        if (!txtRut.getText().equals("") 
+        if (!txtRut.getText().equals("")
                 && !txtName.getText().equals("")
                 && !txtAddress.getText().equals("")
                 && !txtPhone.getText().equals("")
@@ -238,6 +255,11 @@ public class ClientsMaintainer extends javax.swing.JFrame {
             clientsList.append(cliente.toString() + "\n");
         });
     }//GEN-LAST:event_btnListActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -281,6 +303,7 @@ public class ClientsMaintainer extends javax.swing.JFrame {
     private javax.swing.JButton btnList;
     private javax.swing.JButton btnSearch;
     private javax.swing.JTextArea clientsList;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

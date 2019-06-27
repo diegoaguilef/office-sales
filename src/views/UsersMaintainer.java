@@ -23,6 +23,10 @@ public class UsersMaintainer extends javax.swing.JFrame {
         setLocationRelativeTo(this);
     }
 
+    /**
+     *
+     * @param user
+     */
     public void fillForm(User user) {
         txtUsername.setText(user.getUsername());
         txtFullName.setText(user.getName());
@@ -32,6 +36,9 @@ public class UsersMaintainer extends javax.swing.JFrame {
         checkLocked.setSelected(user.isLocked());
     }
 
+    /**
+     *
+     */
     public void clearForm() {
         txtUsername.setText("");
         txtFullName.setText("");
@@ -69,6 +76,7 @@ public class UsersMaintainer extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
         txtRepeatPassword = new javax.swing.JPasswordField();
         checkLocked = new javax.swing.JCheckBox();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -141,14 +149,22 @@ public class UsersMaintainer extends javax.swing.JFrame {
         usersList.setRows(5);
         jScrollPane1.setViewportView(usersList);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 410, 180));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 410, 160));
         jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 150, -1));
         jPanel1.add(txtRepeatPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 150, -1));
 
         checkLocked.setText("Bloqueado/Bloquear");
         jPanel1.add(checkLocked, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 490));
+        jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, 140, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -252,6 +268,11 @@ public class UsersMaintainer extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -297,6 +318,7 @@ public class UsersMaintainer extends javax.swing.JFrame {
     private javax.swing.JButton btnListUsers;
     private javax.swing.JButton btnSearch;
     private javax.swing.JCheckBox checkLocked;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

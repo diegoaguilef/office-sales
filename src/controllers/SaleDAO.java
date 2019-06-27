@@ -114,6 +114,11 @@ public class SaleDAO {
         return sale;
     }
 
+    /**
+     *
+     * @param date
+     * @return
+     */
     public static ArrayList<Sale> findByDate(Fecha date) {
         ArrayList<Sale> salesArr = new ArrayList<>();
         for (Sale s : sales) {
@@ -123,17 +128,24 @@ public class SaleDAO {
         }
         return salesArr;
     }
-    
-    protected static boolean betweenDates(String date, String start, String end){
+
+    /**
+     *
+     * @param date
+     * @param start
+     * @param end
+     * @return
+     */
+    protected static boolean betweenDates(String date, String start, String end) {
         Date startDate = null, endDate = null, saleAt = null;
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        try{
+        try {
             startDate = format.parse(start);
             endDate = format.parse(end);
             saleAt = format.parse(date);
-            if(startDate.before(saleAt) && endDate.after(saleAt)){
+            if (startDate.before(saleAt) && endDate.after(saleAt)) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
         } catch (ParseException e) {
@@ -142,9 +154,15 @@ public class SaleDAO {
         }
     }
 
+    /**
+     *
+     * @param start
+     * @param end
+     * @return
+     */
     public static ArrayList<Sale> findBetweenDates(Fecha start, Fecha end) {
         ArrayList<Sale> salesArr = new ArrayList<>();
-        
+
         for (Sale s : all()) {
             if (betweenDates(s.getSaleAt().toString(), start.toString(), end.toString())) {
                 salesArr.add(s);

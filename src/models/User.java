@@ -16,9 +16,19 @@ public class User extends Person {
     private int loginAttempts;
     private boolean locked;
 
+    /**
+     *
+     */
     public User() {
     }
 
+    /**
+     *
+     * @param username
+     * @param password
+     * @param name
+     * @param rut
+     */
     public User(String username, String password, String name, String rut) {
         super(name, rut);
         this.username = username;
@@ -27,6 +37,14 @@ public class User extends Person {
         this.locked = false;
     }
 
+    /**
+     *
+     * @param username
+     * @param password
+     * @param name
+     * @param rut
+     * @param locked
+     */
     public User(String username, String password, String name, String rut, boolean locked) {
         super(name, rut);
         this.username = username;
@@ -35,22 +53,41 @@ public class User extends Person {
         this.locked = locked;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     *
+     * @param username
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     *
+     */
     public void loginAttempt() {
         this.loginAttempts += 1;
         if (loginAttempts >= 3) {
@@ -59,22 +96,40 @@ public class User extends Person {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public int remainingAttempts() {
         return 3 - loginAttempts;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isLocked() {
         return locked;
     }
 
+    /**
+     *
+     */
     public void lockUser() {
         this.locked = true;
     }
 
+    /**
+     *
+     * @return
+     */
     public String displayStatus() {
         return isLocked() ? "Bloqueado" : "Habilitado";
     }
 
+    /**
+     *
+     */
     public void unlockUser() {
         this.loginAttempts = 0;
         this.locked = false;

@@ -107,8 +107,13 @@ public class Fecha {
     public void setAnio(int anio) {
         this.anio = anio;
     }
-    
-    public boolean equals(Fecha fecha){
+
+    /**
+     *
+     * @param fecha
+     * @return
+     */
+    public boolean equals(Fecha fecha) {
         return toString().equals(fecha.toString());
     }
 
@@ -119,14 +124,14 @@ public class Fecha {
     @Override
     public String toString() {
         String day, month;
-        if(dia < 10){
-            day = "0"+dia;
-        }else{
+        if (dia < 10) {
+            day = "0" + dia;
+        } else {
             day = String.valueOf(dia);
         }
-        if(mes < 10){
-            month = "0"+mes;
-        }else{
+        if (mes < 10) {
+            month = "0" + mes;
+        } else {
             month = String.valueOf(mes);
         }
         return day + "/" + month + "/" + anio;

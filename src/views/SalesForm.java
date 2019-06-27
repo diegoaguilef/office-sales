@@ -32,6 +32,9 @@ public class SalesForm extends javax.swing.JFrame {
         fillComboClients();
     }
 
+    /**
+     *
+     */
     public void fillComboArticles() {
         ArrayList<Article> articles = ArticleDAO.all();
         comboArticles.removeAllItems();
@@ -41,6 +44,9 @@ public class SalesForm extends javax.swing.JFrame {
         });
     }
 
+    /**
+     *
+     */
     public void fillComboClients() {
         ArrayList<Client> clients = ClientDAO.all();
         comboClients.removeAllItems();
@@ -50,6 +56,9 @@ public class SalesForm extends javax.swing.JFrame {
         });
     }
 
+    /**
+     *
+     */
     public void clearForm() {
         txtId.setText("");
         txtDate.setText("");
@@ -64,6 +73,10 @@ public class SalesForm extends javax.swing.JFrame {
         txtTotal.setText("");
     }
 
+    /**
+     *
+     * @param qtty
+     */
     public void calculatePrice(int qtty) {
         int price = Integer.parseInt(stxPrice.getText()),
                 total;
@@ -76,6 +89,10 @@ public class SalesForm extends javax.swing.JFrame {
         txtTotal.setText(String.valueOf(total));
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean hasStock() {
         int stock, qtty;
         qtty = Integer.parseInt(txtQtt.getText());
@@ -295,10 +312,10 @@ public class SalesForm extends javax.swing.JFrame {
             client = ClientDAO.findByName(clientName);
             qtty = Integer.parseInt(txtQtt.getText());
             sale = new Sale(id, date, article, client, qtty);
-            if(SaleDAO.create(sale)){
+            if (SaleDAO.create(sale)) {
                 JOptionPane.showMessageDialog(null, "Venta ingresada!", "Venta", 1);
                 clearForm();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Error al ingresar venta", "Error", 0);
             }
         } else {
@@ -308,11 +325,10 @@ public class SalesForm extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Producto sin Stock :\n "
                         + "Solicitado : " + txtQtt.getText() + "\n "
                         + "Stock : " + stxStock.getText(), "Validación", 0);
-            }else if (!txtQtt.getText().trim().equals("")
-                || Integer.parseInt(txtQtt.getText().trim()) != 0){
+            } else if (!txtQtt.getText().trim().equals("")
+                    || Integer.parseInt(txtQtt.getText().trim()) != 0) {
                 JOptionPane.showMessageDialog(null, "Ingrese una cantidad válida distinta de 0", "Validación", 0);
-            }
-            else {
+            } else {
                 JOptionPane.showMessageDialog(null, "Ingrese todos los datos de la venta", "Validación", 0);
             }
         }
@@ -333,7 +349,7 @@ public class SalesForm extends javax.swing.JFrame {
         int code = evt.getKeyCode();
         int price, qtty = 0;
         if (!(Character.isDigit(c) || code == KeyEvent.VK_BACKSPACE || code == KeyEvent.VK_DELETE)
-            || code == KeyEvent.VK_SPACE) {
+                || code == KeyEvent.VK_SPACE) {
             getToolkit().beep();
             evt.consume();
         } else {
